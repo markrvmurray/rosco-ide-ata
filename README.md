@@ -38,3 +38,4 @@ The addresses are mapped as follows:
 
 The above mapping may be changed by changing the U1 image. This is
 written in CUPL, and you will need a programmer capable of programming
+GAL16V8s or the equivalent.
