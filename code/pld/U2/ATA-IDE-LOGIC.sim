@@ -1,0 +1,139 @@
+%SIGNAL
+PIN   4 =  A1 
+PIN   5 =  A2 
+PIN   6 =  A3 
+PIN   7 =  A4 
+PIN   1 =  CLOCK 
+PIN  16 = !CS1 
+PIN  17 = !CS3 
+PIN  27 =  Ca 
+PIN  26 =  Cb 
+PIN  21 =  DTACK 
+PIN  25 =  DTACK_ENABLE 
+PIN   9 =  FC0 
+PIN  10 =  FC1 
+PIN  11 =  FC2 
+PIN   8 =  INTRQ 
+PIN  18 = !IRQ 
+PIN   2 = !LDS 
+PIN  22 = !LSEL 
+PIN  14 = !RD 
+PIN  13 =  R_nW 
+PIN  23 = !SELECT 
+PIN   3 = !UDS 
+PIN  19 = !USEL 
+PIN  20 = !VPA 
+PIN  15 = !WR 
+%END
+
+%FIELD
+FIELD STATE = Cb,Ca,DTACK,DTACK_ENABLE
+%END
+
+%EQUATION
+CS1 =>
+    !A4 & !SELECT
+
+CS3 =>
+    A4 & !SELECT
+
+Ca.d  =>
+    Ca & Cb & !DTACK
+  # Ca & Cb & DTACK_ENABLE
+  # !Ca & !Cb & !DTACK & !DTACK_ENABLE & !LDS & R_nW & !SELECT
+  # !Ca & !Cb & !DTACK & !DTACK_ENABLE & R_nW & !SELECT & !UDS
+
+Ca.ckmux  =>
+    CLOCK
+
+Ca.sp Cb.sp DTACK.sp DTACK_ENABLE.sp  =>
+    0 
+
+Cb.d  =>
+    Ca & Cb & !DTACK
+  # Ca & Cb & DTACK_ENABLE
+  # !Ca & !Cb & !DTACK & !DTACK_ENABLE & !LDS & R_nW & !SELECT
+  # !Ca & !Cb & !DTACK & !DTACK_ENABLE & R_nW & !SELECT & !UDS
+
+Cb.ckmux  =>
+    CLOCK
+
+Cb.sp  =>
+    
+DS =>
+    UDS
+  # LDS
+
+DTACK.d  =>
+    Ca & Cb & DTACK & DTACK_ENABLE
+  # !Ca & !Cb & DTACK & DTACK_ENABLE
+  # Ca & Cb & DTACK_ENABLE & LDS & UDS
+  # !Ca & !Cb & DTACK_ENABLE & LDS & UDS
+
+DTACK.ckmux  =>
+    CLOCK
+
+DTACK.oe  =>
+    DTACK_ENABLE
+
+DTACK.sp  =>
+    
+DTACK_ENABLE.d  =>
+    Ca & Cb & !DTACK
+  # !Ca & !Cb & !DTACK & DTACK_ENABLE
+  # !Ca & !Cb & !DTACK & !LDS & !R_nW & !SELECT
+  # !Ca & !Cb & !DTACK & !R_nW & !SELECT & !UDS
+
+DTACK_ENABLE.ckmux  =>
+    CLOCK
+
+DTACK_ENABLE.sp  =>
+    
+IRQ =>
+    INTRQ
+
+LSEL =>
+    !LDS & !SELECT
+
+RD =>
+    Ca & !LDS & R_nW & !SELECT
+  # Ca & R_nW & !SELECT & !UDS
+
+USEL =>
+    !SELECT & !UDS
+
+VPA =>
+    1 
+
+VPA.oe  =>
+    A1 & A2 & !A3 & FC0 & FC1 & FC2 & INTRQ
+
+WR =>
+    !LDS & !R_nW & !SELECT
+  # !R_nW & !SELECT & !UDS
+
+CS1.oe  =>
+    1 
+
+CS3.oe  =>
+    1 
+
+IRQ.oe  =>
+    1 
+
+LSEL.oe  =>
+    1 
+
+RD.oe  =>
+    1 
+
+SELECT.oe  =>
+    0 
+
+USEL.oe  =>
+    1 
+
+WR.oe  =>
+    1 
+
+%END

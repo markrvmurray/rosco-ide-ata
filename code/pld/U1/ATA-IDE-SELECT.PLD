@@ -1,0 +1,35 @@
+Name     ROSCO_ATA-IDE_SELECT;
+PartNo   00;
+Date     16/02/2021;
+Revision 01;
+Designer MRVM;
+Company  GTA;
+Assembly None;
+Location IC1;
+Device   G16V8A;
+ 
+/* *************** INPUT PINS *********************/
+PIN [11,9..1,12..14] = [A5..17];
+PIN 19 = !IOSEL;
+
+/* *************** OUTPUT PINS *********************/
+PIN 18 = !SELECT;
+
+/* *************** EQUATIONS *********************/
+
+FIELD addr = [A17..5];
+
+/* The binary quantity in the compound AND expression represents
+   the S's in the below selection string.
+   So
+   I is from IOSEL, and comes from [A23..18]
+   S...S is specified below
+   C selects CS3 vs CS1 in the IDE
+   RRR selects the IDE register
+   x is the LSB and may not be relevant e.g. for 16-bit access
+
+   IIII_IISS_SSSS_SSSS_SSSC_RRRx
+   1111_1000_0000_0010_111C_RRRx
+ 0x   F    8    0    0  4/5  F-0
+*/
+SELECT = IOSEL & addr:'b'XXXXXX0000000000010XXXXX;

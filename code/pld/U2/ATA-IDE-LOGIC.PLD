@@ -1,0 +1,87 @@
+Name     ATA-IDE-LOGIC;
+PartNo   00;
+Date     20/03/2021;
+Revision 01;
+Designer MRVM;
+Company  GTA;
+Assembly None;
+Location IC2;
+Device   V750C;         /* For ATF750C use V750C or V750CPPK (pin-keeper) else use G22V10 for GAL */
+ 
+/* *************** INPUT PINS *********************/
+PIN 1 = CLOCK;
+PIN 2 = !LDS;
+PIN 3 = !UDS;
+PIN [4..7] = [A1..4];
+PIN 8 = INTRQ;
+PIN [9..11] = [FC0..2];
+PIN 13 = R_nW;
+PIN 23 = !SELECT;
+
+/* *************** OUTPUT PINS *********************/
+PIN 14 = !RD;
+PIN 15 = !WR;
+PIN 16 = !CS1;
+PIN 17 = !CS3;
+PIN 18 = !IRQ;
+PIN 19 = !USEL;
+PIN 20 = !VPA;
+PIN 21 = DTACK;
+PIN 22 = !LSEL;
+
+/* *************** INTERNAL NODES *********************/
+NODE DTACK_ENABLE;
+NODE Cb, Ca;
+
+/* *************** EQUATIONS *********************/
+DTACK.sp = 'b'0;
+DTACK_ENABLE.sp = 'b'0;
+DTACK.oe = DTACK_ENABLE;
+Cb.sp = 'b'0;
+Ca.sp = 'b'0;
+
+DS = UDS # LDS;
+FIELD STATE = [Cb, Ca, DTACK, DTACK_ENABLE];
+STATE.ckmux = CLOCK;
+
+SEQUENCE STATE {
+    PRESENT 'b'0000
+        IF SELECT & DS & R_nW
+            NEXT 'b'1100;
+        IF SELECT & DS & !R_nW
+            NEXT 'b'0001;
+        DEFAULT NEXT 'b'0000;
+    PRESENT 'b'1100
+        NEXT 'b'1101;
+    PRESENT 'b'1101
+        IF !DS
+            NEXT 'b'1111;
+        DEFAULT NEXT 'b'1101;
+    PRESENT 'b'1111
+        NEXT 'b'1110;
+    PRESENT 'b'1110
+        NEXT 'b'0000;
+    /* WRITE Sequence */
+    PRESENT 'b'0001
+        IF !DS
+            NEXT 'b'0011;
+        DEFAULT NEXT 'b'0001;
+    PRESENT 'b'0011
+        NEXT 'b'0010;
+    PRESENT 'b'0010
+        NEXT 'b'0000;
+}
+
+RD =  R_nW & SELECT & DS & Ca;
+WR = !R_nW & SELECT & DS;
+
+CS1 = SELECT & !A4;
+CS3 = SELECT & A4;
+
+USEL = SELECT & UDS;
+LSEL = SELECT & LDS;
+
+VPA = 'b'1;
+VPA.oe = INTRQ & (FC2 & FC1 & FC0) & (!A3 & A2 & A1);
+
+IRQ = INTRQ;

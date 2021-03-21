@@ -1,0 +1,24 @@
+# Berkeley PLA format generated using
+#
+# CUPL(WM)        5.0a Serial# 60008009
+# Device          g16v8as  Library DLIB-h-40-2
+# Created         Sun Mar 21 14:40:58 2021
+# Name            ROSCO_ATA-IDE_SELECT
+# Partno          00
+# Revision        01
+# Date            16/02/2021
+# Designer        MRVM
+# Company         GTA
+# Assembly        None
+# Location        IC1
+#
+# Inputs  A5 A6 A7 A8 
+#         A9 A10 A11 A12 
+#         A13 A14 A15 A16 
+#         A17 !IOSEL !SELECT 
+# Outputs !SELECT 
+.i 15
+.o 1
+.p 1
+01000000000001- 1
+.end
