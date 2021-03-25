@@ -1,29 +1,27 @@
 %SIGNAL
-PIN   4 =  A1 
-PIN   5 =  A2 
-PIN   6 =  A3 
-PIN   7 =  A4 
+PIN  10 =  A1 
+PIN   9 =  A2 
+PIN   8 =  A3 
+PIN   2 =  A4 
 PIN   1 =  CLOCK 
-PIN  16 = !CS1 
-PIN  17 = !CS3 
+PIN  20 = !CS1 
+PIN  21 = !CS3 
 PIN  27 =  Ca 
 PIN  26 =  Cb 
-PIN  21 =  DTACK 
+PIN  15 =  DTACK 
 PIN  25 =  DTACK_ENABLE 
-PIN   9 =  FC0 
-PIN  10 =  FC1 
-PIN  11 =  FC2 
-PIN   8 =  INTRQ 
-PIN  18 = !IRQ 
-PIN   2 = !LDS 
-PIN  22 = !LSEL 
-PIN  14 = !RD 
+PIN   3 =  FC0 
+PIN   4 =  FC1 
+PIN   5 =  FC2 
+PIN   6 = !LDS 
+PIN  16 = !LSEL 
+PIN  18 = !RD 
 PIN  13 =  R_nW 
-PIN  23 = !SELECT 
-PIN   3 = !UDS 
-PIN  19 = !USEL 
-PIN  20 = !VPA 
-PIN  15 = !WR 
+PIN  22 = !SELECT 
+PIN   7 = !UDS 
+PIN  17 = !USEL 
+PIN  23 = !VPA 
+PIN  19 = !WR 
 %END
 
 %FIELD
@@ -89,9 +87,6 @@ DTACK_ENABLE.ckmux  =>
 
 DTACK_ENABLE.sp  =>
     
-IRQ =>
-    INTRQ
-
 LSEL =>
     !LDS & !SELECT
 
@@ -106,7 +101,7 @@ VPA =>
     1 
 
 VPA.oe  =>
-    A1 & A2 & !A3 & FC0 & FC1 & FC2 & INTRQ
+    A1 & A2 & !A3 & FC0 & FC1 & FC2
 
 WR =>
     !LDS & !R_nW & !SELECT
@@ -116,9 +111,6 @@ CS1.oe  =>
     1 
 
 CS3.oe  =>
-    1 
-
-IRQ.oe  =>
     1 
 
 LSEL.oe  =>

@@ -1,11 +1,11 @@
-{COMPONENT X:\GIT\CPLD\ROSCO_ATA-IDE-LOGIC\ATA-IDE-LOGIC.SYM
+{COMPONENT Y:\DOCUMENTS\WORK\ATA-IDE\CODE\PLD\U2\ATA-IDE-LOGIC.SYM
 
  {ENVIRONMENT
   {PDIFvrev 3.00}
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Sun Mar 21 14:07:50 2021 "}
+  {DBtime "Sun Mar 28 13:07:20 2021 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -33,40 +33,37 @@
  {SYMBOL
   {PIN_DEF
    [Ly "PINCON"]
-   {P CLOCK {Pt "INPUT"}{Lq 0}{Ploc 100 280}}
-   {P LDS' {Pt "INPUT"}{Lq 0}{Ploc 100 240}}
-   {P UDS' {Pt "INPUT"}{Lq 0}{Ploc 100 220}}
-   {P A1 {Pt "INPUT"}{Lq 0}{Ploc 100 200}}
-   {P A2 {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
-   {P A3 {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
-   {P A4 {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
-   {P INTRQ {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
-   {P FC0 {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
-   {P FC1 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
-   {P FC2 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P CLOCK {Pt "INPUT"}{Lq 0}{Ploc 100 260}}
+   {P A4 {Pt "INPUT"}{Lq 0}{Ploc 100 220}}
+   {P FC0 {Pt "INPUT"}{Lq 0}{Ploc 100 200}}
+   {P FC1 {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
+   {P FC2 {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
+   {P LDS' {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
+   {P UDS' {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
+   {P A3 {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
+   {P A2 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P A1 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
    {P R_NW {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
    {P SELECT' {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
-   {P RD' {Pt "I/O"}{Lq 0}{Ploc 310 20}}
-   {P WR' {Pt "I/O"}{Lq 0}{Ploc 310 40}}
-   {P CS1' {Pt "I/O"}{Lq 0}{Ploc 310 60}}
-   {P CS3' {Pt "I/O"}{Lq 0}{Ploc 310 80}}
-   {P IRQ' {Pt "I/O"}{Lq 0}{Ploc 310 100}}
-   {P USEL' {Pt "I/O"}{Lq 0}{Ploc 310 120}}
+   {P LSEL' {Pt "I/O"}{Lq 0}{Ploc 310 20}}
+   {P USEL' {Pt "I/O"}{Lq 0}{Ploc 310 40}}
+   {P RD' {Pt "I/O"}{Lq 0}{Ploc 310 60}}
+   {P WR' {Pt "I/O"}{Lq 0}{Ploc 310 80}}
+   {P CS1' {Pt "I/O"}{Lq 0}{Ploc 310 100}}
+   {P CS3' {Pt "I/O"}{Lq 0}{Ploc 310 120}}
    {P VPA' {Pt "I/O"}{Lq 0}{Ploc 310 140}}
-   {P LSEL' {Pt "I/O"}{Lq 0}{Ploc 310 160}}
-   {P DTACK {Pt "OUTPUT"}{Lq 0}{Ploc 310 180}}
+   {P DTACK {Pt "OUTPUT"}{Lq 0}{Ploc 310 160}}
   }
 
   {PKG
    [Ly "REFDES"]
    [Ts 25][Tj "CB"][Tr 0][Tm "N"]
-   {Rdl 205 310}
+   {Rdl 205 290}
 
    [Ly "PINNUM"]
    [Ts 15][Tj "RC"]
-   {Pnl 120 290}
+   {Pnl 120 270}
    [Ts 15][Tj "RC"]
-   {Pnl 120 250}
    {Pnl 120 230}
    {Pnl 120 210}
    {Pnl 120 190}
@@ -87,26 +84,24 @@
    {Pnl 290 130}
    {Pnl 290 150}
    {Pnl 290 170}
-   {Pnl 290 190}
 
-   {Sd A 1 2 3 4 5 6 7 8 9 10 11 13 23 14 15 16 17 18 19 20 22 21}
+   {Sd A 1 2 3 4 5 6 7 8 9 10 13 22 16 17 18 19 20 21 23 15}
   }
 
   {PIC
    [Ly "GATE"]
    [Ts 15][Tj "LC"][Tr 0][Tm "N"]
-   {R 130 300 280 0}
-   {L 130 280 100 280}
-   {L 130 290 140 280 130 270}
-   {L 120 240 100 240}
-   {C 125 240 5}
-   {L 120 220 100 220}
-   {C 125 220 5}
+   {R 130 280 280 0}
+   {L 130 260 100 260}
+   {L 130 270 140 260 130 250}
+   {L 130 220 100 220}
    {L 130 200 100 200}
    {L 130 180 100 180}
    {L 130 160 100 160}
-   {L 130 140 100 140}
-   {L 130 120 100 120}
+   {L 120 140 100 140}
+   {C 125 140 5}
+   {L 120 120 100 120}
+   {C 125 120 5}
    {L 130 100 100 100}
    {L 130 80 100 80}
    {L 130 60 100 60}
@@ -127,34 +122,30 @@
    {L 290 120 310 120}
    {C 285 140 5}
    {L 290 140 310 140}
-   {C 285 160 5}
-   {L 290 160 310 160}
-   {L 280 180 310 180}
+   {L 280 160 310 160}
    [Ly "PINNAM"]
    [Tj "LC"]
-   {T "CLOCK" 140 280}
-   {T "LDS'" 140 240}
-   {T "UDS'" 140 220}
-   {T "A1" 140 200}
-   {T "A2" 140 180}
-   {T "A3" 140 160}
-   {T "A4" 140 140}
-   {T "INTRQ" 140 120}
-   {T "FC0" 140 100}
-   {T "FC1" 140 80}
-   {T "FC2" 140 60}
+   {T "CLOCK" 140 260}
+   {T "A4" 140 220}
+   {T "FC0" 140 200}
+   {T "FC1" 140 180}
+   {T "FC2" 140 160}
+   {T "LDS'" 140 140}
+   {T "UDS'" 140 120}
+   {T "A3" 140 100}
+   {T "A2" 140 80}
+   {T "A1" 140 60}
    {T "R_NW" 140 40}
    {T "SELECT'" 140 20}
    [Tj "RC"]
-   {T "RD'" 270 20}
-   {T "WR'" 270 40}
-   {T "CS1'" 270 60}
-   {T "CS3'" 270 80}
-   {T "IRQ'" 270 100}
-   {T "USEL'" 270 120}
+   {T "LSEL'" 270 20}
+   {T "USEL'" 270 40}
+   {T "RD'" 270 60}
+   {T "WR'" 270 80}
+   {T "CS1'" 270 100}
+   {T "CS3'" 270 120}
    {T "VPA'" 270 140}
-   {T "LSEL'" 270 160}
-   {T "DTACK" 270 180}
+   {T "DTACK" 270 160}
    [Ly "DEVICE"]
    [Tj "CT"]
    {T "V750C" 205 -10}
@@ -168,7 +159,7 @@
    {EX
     [Ly "ATTR2"]
     [Ts 12][Tj "CT"][Tr 0][Tm "N"]
-    {At PLD X:\GIT\CPLD\ROSCO_ATA-IDE-LOGIC\ATA-IDE-LOGIC 205 300}
+    {At PLD Y:\DOCUMENTS\WORK\ATA-IDE\CODE\PLD\U2\ATA-IDE-LOGIC 205 280}
    }
   }
  }
@@ -180,19 +171,7 @@
   {NET_DEF
    {N CLOCK
    }
-   {N LDS'
-   }
-   {N UDS'
-   }
-   {N A1
-   }
-   {N A2
-   }
-   {N A3
-   }
    {N A4
-   }
-   {N INTRQ
    }
    {N FC0
    }
@@ -200,9 +179,23 @@
    }
    {N FC2
    }
+   {N LDS'
+   }
+   {N UDS'
+   }
+   {N A3
+   }
+   {N A2
+   }
+   {N A1
+   }
    {N R_NW
    }
    {N SELECT'
+   }
+   {N LSEL'
+   }
+   {N USEL'
    }
    {N RD'
    }
@@ -212,13 +205,7 @@
    }
    {N CS3'
    }
-   {N IRQ'
-   }
-   {N USEL'
-   }
    {N VPA'
-   }
-   {N LSEL'
    }
    {N DTACK
    }

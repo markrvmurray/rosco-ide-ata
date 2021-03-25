@@ -1,19 +1,19 @@
 Name     ROSCO_ATA-IDE_SELECT;
 PartNo   00;
-Date     16/02/2021;
+Date     27/03/2021;
 Revision 01;
 Designer MRVM;
 Company  GTA;
 Assembly None;
-Location IC1;
-Device   G16V8A;
+Location U1;
+Device   G16V8;
  
 /* *************** INPUT PINS *********************/
-PIN [11,9..1,12..14] = [A5..17];
-PIN 19 = !IOSEL;
+PIN [1..9,18,14..12] = [A17..5];
+PIN 11 = !IOSEL;
 
 /* *************** OUTPUT PINS *********************/
-PIN 18 = !SELECT;
+PIN 19 = !SELECT;
 
 /* *************** EQUATIONS *********************/
 
@@ -29,7 +29,7 @@ FIELD addr = [A17..5];
    x is the LSB and may not be relevant e.g. for 16-bit access
 
    IIII_IISS_SSSS_SSSS_SSSC_RRRx
-   1111_1000_0000_0010_111C_RRRx
+   1111_1000_0000_0010_010C_RRRx
  0x   F    8    0    0  4/5  F-0
 */
 SELECT = IOSEL & addr:'b'XXXXXX0000000000010XXXXX;

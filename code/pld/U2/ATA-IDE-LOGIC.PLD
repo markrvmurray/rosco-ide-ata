@@ -1,33 +1,32 @@
 Name     ATA-IDE-LOGIC;
 PartNo   00;
-Date     20/03/2021;
+Date     28/03/2021;
 Revision 01;
 Designer MRVM;
 Company  GTA;
 Assembly None;
-Location IC2;
+Location U2;
 Device   V750C;         /* For ATF750C use V750C or V750CPPK (pin-keeper) else use G22V10 for GAL */
  
 /* *************** INPUT PINS *********************/
 PIN 1 = CLOCK;
-PIN 2 = !LDS;
-PIN 3 = !UDS;
-PIN [4..7] = [A1..4];
-PIN 8 = INTRQ;
-PIN [9..11] = [FC0..2];
+PIN 2 = A4;
+PIN [3..5] = [FC0..2];
+PIN 6 = !LDS;
+PIN 7 = !UDS;
+PIN [8..10] = [A3..1];
 PIN 13 = R_nW;
-PIN 23 = !SELECT;
+PIN 22 = !SELECT;
 
 /* *************** OUTPUT PINS *********************/
-PIN 14 = !RD;
-PIN 15 = !WR;
-PIN 16 = !CS1;
-PIN 17 = !CS3;
-PIN 18 = !IRQ;
-PIN 19 = !USEL;
-PIN 20 = !VPA;
-PIN 21 = DTACK;
-PIN 22 = !LSEL;
+PIN 15 = DTACK;
+PIN 16 = !LSEL;
+PIN 17 = !USEL;
+PIN 18 = !RD;
+PIN 19 = !WR;
+PIN 20 = !CS1;
+PIN 21 = !CS3;
+PIN 23 = !VPA;
 
 /* *************** INTERNAL NODES *********************/
 NODE DTACK_ENABLE;
@@ -51,6 +50,7 @@ SEQUENCE STATE {
         IF SELECT & DS & !R_nW
             NEXT 'b'0001;
         DEFAULT NEXT 'b'0000;
+    /* READ Sequence */
     PRESENT 'b'1100
         NEXT 'b'1101;
     PRESENT 'b'1101
@@ -70,6 +70,23 @@ SEQUENCE STATE {
         NEXT 'b'0010;
     PRESENT 'b'0010
         NEXT 'b'0000;
+    /* These should not happen normally */
+    PRESENT 'b'0100
+        NEXT 'b'0000;
+    PRESENT 'b'0101
+        NEXT 'b'0000;
+    PRESENT 'b'0110
+        NEXT 'b'0000;
+    PRESENT 'b'0111
+        NEXT 'b'0000;
+    PRESENT 'b'1000
+        NEXT 'b'0000;
+    PRESENT 'b'1001
+        NEXT 'b'0000;
+    PRESENT 'b'1010
+        NEXT 'b'0000;
+    PRESENT 'b'1011
+        NEXT 'b'0000;
 }
 
 RD =  R_nW & SELECT & DS & Ca;
@@ -82,6 +99,4 @@ USEL = SELECT & UDS;
 LSEL = SELECT & LDS;
 
 VPA = 'b'1;
-VPA.oe = INTRQ & (FC2 & FC1 & FC0) & (!A3 & A2 & A1);
-
-IRQ = INTRQ;
+VPA.oe = (FC2 & FC1 & FC0) & (!A3 & A2 & A1);
