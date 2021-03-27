@@ -1,0 +1,11 @@
+* text=auto
+*.PLD text eol=crlf
+*.abs text eol=crlf
+*.doc text eol=crlf
+*.jed text eol=crlf
+*.pdf text eol=crlf
+*.pla text eol=crlf
+*.si text eol=crlf
+*.sim text eol=crlf
+*.so text eol=crlf
+*.wo text eol=crlf
