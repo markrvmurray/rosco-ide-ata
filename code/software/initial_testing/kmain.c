@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #define IO_BASE 0x00F80000
-#define IDE_BASE (IO_BASE + 0xAAE0)
+#define IDE_BASE (IO_BASE + 0x0040)
 
 #define IDE_REG_RD_DATA 0
 #define IDE_REG_RD_ERROR 1
