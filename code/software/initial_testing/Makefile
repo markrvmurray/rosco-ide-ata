@@ -33,7 +33,6 @@ BINARY_EXT=bin
 MAP=$(BINARY_BASENAME).map
 BINARY=$(BINARY_BASENAME).$(BINARY_EXT)
 
-# OBJECTS=kmain.o berr_handler.o
 OBJECTS=kmain.o
 
 %.s : %.c

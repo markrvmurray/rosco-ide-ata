@@ -32,6 +32,32 @@
 
 #define IDE_REG_WR_DEVICE_CONTROL 14
 
+static char *str_error_reg[8][2] = {
+	{"amnf", "AMNF"},
+	{"t0nf", "T0NF"},
+	{"abrt", "ABRT"},
+	{" mcr", " MCR"},
+	{"idnf", "IDNF"},
+	{"  mc", "  MC"},
+	{" unc", " UNC"},
+	{"   x", "   X"}
+};
+
+enum REG_ERROR_BIT { ERROR_AMNF, ERROR_T0NF, ERROR_ABRT, ERROR_MCR, ERROR_IDNF, ERROR_MC, ERROR_UNC, ERROR_X };
+
+static char *str_status_reg[8][2] = {
+	{" err", " ERR"},
+	{" idx", " IDX"},
+	{"corr", "CORR"},
+	{" drq", " DRQ"},
+	{" dsc", " DSC"},
+	{"  df", "  DF"},
+	{"drdy", "DRDY"},
+	{" bsy", " BSY"}
+};
+
+enum REG_STATUS_BIT { STATUS_ERR, STATUS_IDX, STATUS_CORR, STATUS_DRQ, STATUS_DSC, STATUS_DF, STATUS_DRDY, STATUS_BSY };
+
 volatile uint16_t *idereg = (volatile uint16_t *)IDE_BASE;
 
 volatile uint16_t vstatus, verror;
@@ -59,9 +85,32 @@ autovector_ipl_3_handler(void)
 }
 
 void
+print_error(uint8_t err_reg)
+{
+	int i;
+
+	printf("Error register =  [ ");
+	for (i = 7; i >= 0; i--)
+		printf("%s ", str_error_reg[i][err_reg >> i & 0x01]);
+	printf("]\r\n");
+}
+
+void
+print_status(uint8_t stat_reg)
+{
+	int i;
+
+	printf("Status register = [ ");
+	for (i = 7; i >= 0; i--)
+		printf("%s ", str_status_reg[i][stat_reg >> i & 0x01]);
+	printf("]\r\n");
+}
+
+void
 kmain(void)
 {
 	void (**vector)(void);
+	uint8_t error, status;
 
 	printf("Setting Autovector IPL handlers\n\r");
 	vector = (void (**)(void))(&_INITIAL_STACK);
@@ -86,8 +135,9 @@ kmain(void)
 	printf("Enabling interrupt\r\n");
 	idereg[IDE_REG_WR_DEVICE_CONTROL] = 0x0000;
 
-#if 0
+#if 1
 	printf("Sending the NOP command\r\n");
+	printf("Should set the ERR status, and an ABRT error\r\n");
 	vread = false;
 	vwrite = false;
 	idereg[IDE_REG_WR_COMMAND] = 0x0000;
@@ -100,7 +150,7 @@ kmain(void)
 	idereg[IDE_REG_WR_COMMAND] = 0x00EC;
 #endif
 
-#if 1
+#if 0
 	printf("Sending the READ SECTORS command\r\n");
 	vread = true;
 	vwrite = false;
@@ -137,9 +187,13 @@ kmain(void)
 	while (!virq)
 		continue;
 
-	printf("Error = %04X\r\n", verror);
+	status = (uint8_t)vstatus;
+	print_status(status);
 
-	printf("vstatus = %04X\r\n", vstatus);
+	if (status & (1<<STATUS_ERR)) {
+		error = (uint8_t)verror;
+		print_error(error);
+	}
 
 	printf("Checking for DRQ\r\n");
 	if ((vstatus & 0x0008 && vread) || vwrite) {
