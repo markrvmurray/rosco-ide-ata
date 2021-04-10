@@ -302,7 +302,7 @@ Connection ~ 8100 5800
 Wire Wire Line
 	8100 5800 8100 5300
 Wire Wire Line
-	7100 4800 6200 4800
+	7100 4800 6000 4800
 Text GLabel 3500 4900 2    50   Input ~ 0
 R~W~
 Text GLabel 5300 4900 2    50   Input ~ 0
@@ -355,7 +355,7 @@ Wire Wire Line
 	8900 4650 8900 4800
 Wire Wire Line
 	8200 4800 7600 4800
-Text GLabel 7100 5400 0    50   Output ~ 0
+Text GLabel 6450 5550 0    50   Output ~ 0
 INTRQ
 $Comp
 L Logic_Programmable:GAL16V8 U1
@@ -837,8 +837,8 @@ $Comp
 L Device:R R1
 U 1 1 6026136B
 P 6650 5300
-F 0 "R1" V 6443 5300 50  0000 C CNN
-F 1 "10k" V 6534 5300 50  0000 C CNN
+F 0 "R1" V 6550 5250 50  0000 C CNN
+F 1 "10k" V 6550 5400 50  0000 C CNN
 F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6580 5300 50  0001 C CNN
 F 3 "~" H 6650 5300 50  0001 C CNN
 	1    6650 5300
@@ -972,16 +972,16 @@ Wire Wire Line
 $Comp
 L power:GND #PWR014
 U 1 1 603C6218
-P 6200 5350
-F 0 "#PWR014" H 6200 5100 50  0001 C CNN
-F 1 "GND" H 6205 5177 50  0000 C CNN
-F 2 "" H 6200 5350 50  0001 C CNN
-F 3 "" H 6200 5350 50  0001 C CNN
-	1    6200 5350
+P 6000 5600
+F 0 "#PWR014" H 6000 5350 50  0001 C CNN
+F 1 "GND" H 6005 5427 50  0000 C CNN
+F 2 "" H 6000 5600 50  0001 C CNN
+F 3 "" H 6000 5600 50  0001 C CNN
+	1    6000 5600
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 4800 6200 5350
+	6000 4800 6000 5400
 Wire Wire Line
 	6900 2050 7250 2050
 Wire Wire Line
@@ -1157,32 +1157,10 @@ Wire Wire Line
 Wire Wire Line
 	650  6650 850  6650
 $Comp
-L Jumper:SolderJumper_2_Open JP3
-U 1 1 6064DE34
-P 9900 2600
-F 0 "JP3" H 9900 2805 50  0000 C CNN
-F 1 "SolderJumper_2_Open" H 10150 2700 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 9900 2600 50  0001 C CNN
-F 3 "~" H 9900 2600 50  0001 C CNN
-	1    9900 2600
-	1    0    0    -1  
-$EndComp
-$Comp
-L Jumper:SolderJumper_2_Open JP4
-U 1 1 6064FE61
-P 9900 2900
-F 0 "JP4" H 9900 3105 50  0000 C CNN
-F 1 "SolderJumper_2_Open" H 10150 3000 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 9900 2900 50  0001 C CNN
-F 3 "~" H 9900 2900 50  0001 C CNN
-	1    9900 2900
-	1    0    0    -1  
-$EndComp
-$Comp
 L Jumper:SolderJumper_2_Open JP5
 U 1 1 60650BAE
 P 9900 3200
-F 0 "JP5" H 9900 3405 50  0000 C CNN
+F 0 "JP5" H 10100 3150 50  0000 C CNN
 F 1 "SolderJumper_2_Open" H 10150 3300 50  0000 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 9900 3200 50  0001 C CNN
 F 3 "~" H 9900 3200 50  0001 C CNN
@@ -1226,7 +1204,7 @@ F 0 "D1" V 5200 6950 50  0000 C CNN
 F 1 "LED" V 5300 6950 50  0000 C CNN
 F 2 "LEDs:LED_D5.0mm" H 5250 6800 50  0001 C CNN
 F 3 "http://www.farnell.com/datasheets/1811043.pdf" H 5250 6800 50  0001 C CNN
-F 4 " uk.farnellcom 3218450" V 5250 6800 50  0001 C CNN "Vendor"
+F 4 " uk.farnell.com 2314284" V 5250 6800 50  0001 C CNN "Vendor"
 	1    5250 6800
 	0    1    -1   0   
 $EndComp
@@ -1251,7 +1229,8 @@ P 10100 4900
 F 0 "J3" H 10150 6000 50  0000 C CNN
 F 1 "Conn_02x22_Odd_Even" H 10200 3700 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_2x22_Pitch2.00mm" H 10100 4900 50  0001 C CNN
-F 3 "~" H 10100 4900 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2701933.pdf" H 10100 4900 50  0001 C CNN
+F 4 "uk.farnell.com 1756945" H 10100 4900 50  0001 C CNN "Vendor"
 	1    10100 4900
 	1    0    0    -1  
 $EndComp
@@ -1435,4 +1414,51 @@ Connection ~ 3650 7150
 Text Notes 4150 6750 0    50   ~ 0
 Only place C9\nif 44-pin mini-\nconnector J3\nis selected.
 NoConn ~ 4200 2050
+$Comp
+L Device:R R5
+U 1 1 6071BF2E
+P 6650 5400
+F 0 "R5" V 6750 5350 50  0000 C CNN
+F 1 "10k" V 6750 5500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6580 5400 50  0001 C CNN
+F 3 "~" H 6650 5400 50  0001 C CNN
+	1    6650 5400
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6800 5400 6850 5400
+Wire Wire Line
+	6500 5400 6000 5400
+Connection ~ 6000 5400
+Wire Wire Line
+	6000 5400 6000 5600
+Wire Wire Line
+	6850 5400 6850 5550
+Wire Wire Line
+	6850 5550 6450 5550
+Connection ~ 6850 5400
+Wire Wire Line
+	6850 5400 7100 5400
+$Comp
+L Jumper:SolderJumper_2_Bridged JP3
+U 1 1 6071DEF0
+P 9900 2600
+F 0 "JP3" H 10100 2550 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 10200 2700 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 9900 2600 50  0001 C CNN
+F 3 "~" H 9900 2600 50  0001 C CNN
+	1    9900 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_2_Bridged JP4
+U 1 1 60724169
+P 9900 2900
+F 0 "JP4" H 10100 2850 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 10200 3000 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 9900 2900 50  0001 C CNN
+F 3 "~" H 9900 2900 50  0001 C CNN
+	1    9900 2900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
