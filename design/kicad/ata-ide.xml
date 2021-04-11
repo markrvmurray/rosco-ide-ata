@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/Users/markmurray/Documents/Work/rosco_68k/ata-ide/design/kicad/ata-ide.sch</source>
-    <date>Saturday, 10 April 2021 at 09:50:26</date>
+    <date>Sunday, 11 April 2021 at 16:35:17</date>
     <tool>Eeschema (5.1.9-0-10_14)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -120,7 +120,7 @@
       <tstamp>602E3B77</tstamp>
     </comp>
     <comp ref="C7">
-      <value>100u</value>
+      <value>10u</value>
       <footprint>Capacitors_THT:CP_Radial_D8.0mm_P2.50mm</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="CP" description="Polarized capacitor"/>
@@ -136,7 +136,7 @@
       <tstamp>602F8250</tstamp>
     </comp>
     <comp ref="C8">
-      <value>10u</value>
+      <value>100u</value>
       <footprint>Capacitors_THT:CP_Radial_D8.0mm_P2.50mm</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="CP" description="Polarized capacitor"/>

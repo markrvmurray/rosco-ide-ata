@@ -493,7 +493,7 @@ L Device:CP C7
 U 1 1 602E832C
 P 3250 6900
 F 0 "C7" H 3368 6946 50  0000 L CNN
-F 1 "100u" H 3368 6855 50  0000 L CNN
+F 1 "10u" H 3368 6855 50  0000 L CNN
 F 2 "Capacitors_THT:CP_Radial_D8.0mm_P2.50mm" H 3288 6750 50  0001 C CNN
 F 3 "~" H 3250 6900 50  0001 C CNN
 	1    3250 6900
@@ -567,7 +567,7 @@ L Device:CP C8
 U 1 1 602FD673
 P 3650 6900
 F 0 "C8" H 3768 6946 50  0000 L CNN
-F 1 "10u" H 3768 6855 50  0000 L CNN
+F 1 "100u" H 3768 6855 50  0000 L CNN
 F 2 "Capacitors_THT:CP_Radial_D8.0mm_P2.50mm" H 3688 6750 50  0001 C CNN
 F 3 "~" H 3650 6900 50  0001 C CNN
 	1    3650 6900
@@ -1412,7 +1412,7 @@ Wire Wire Line
 	4050 7150 3650 7150
 Connection ~ 3650 7150
 Text Notes 4150 6750 0    50   ~ 0
-Only place C9\nif 44-pin mini-\nconnector J3\nis selected.
+Place C9 only\nif 44-pin mini-\nconnector J3\nis selected.
 NoConn ~ 4200 2050
 $Comp
 L Device:R R5
@@ -1461,4 +1461,10 @@ F 3 "~" H 9900 2900 50  0001 C CNN
 	1    9900 2900
 	1    0    0    -1  
 $EndComp
+Text Notes 2750 6450 0    50   ~ 0
+Place C7 if you are planning to\nsupply 5V to J2 via pin 20.
+Text Notes 7000 3700 0    50   ~ 0
+0.1" pitch 40-pin\n3 1/2" HD connector
+Text Notes 9950 3750 0    50   ~ 0
+2mm pitch 44-pin\n2 1/2" mini-HD\nconnector.
 $EndSCHEMATC
