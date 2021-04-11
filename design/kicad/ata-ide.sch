@@ -5,7 +5,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "ROSCO_M68K IDE/ATA EXPANSION"
-Date "2021-03-25"
+Date "2021-04-11"
 Rev "1.1"
 Comp "GTA"
 Comment1 "See https://github.com/markrvmurray/rosco-ide-ata/blob/main/LICENCE.hardware.txt"
